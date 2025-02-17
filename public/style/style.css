@@ -1,0 +1,9 @@
+*{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#header{
+    background: rgb(255,166,0);
+    color: white;
+    background: linear-gradient(90deg, rgba(255,166,0,1) 0%, rgba(224,13,13,1) 100%);
+}
