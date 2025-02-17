@@ -38,6 +38,7 @@ create table if not exists feladatok(
 create table if not exists feladatsor(
     id int primary key auto_increment,
     szint_id int not null,
+    kat_id int not null,
     cim varchar(125) not null,
     feladat text not null,
     ido timestamp default current_timestamp
