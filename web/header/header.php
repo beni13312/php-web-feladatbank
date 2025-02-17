@@ -1,8 +1,13 @@
 <div id="header">
-
+    <script src="/public/script/nav.js"></script>
     <nav id="navbar">
-        <div class="nav-d"><a href="info.php">Információ</a></div>
-        <div class="nav-d">a</div>
-        <div class="nav-d">a</div>
+        <div id="nav-left">
+            <h2 id="nav-title">Feladat gyűjtemény</h2>
+        </div>
+        <div id="nav-right">
+            <div class="nav-d" id="nav-info">Információ</div>
+            <div class="nav-d">a</div>
+            <div class="nav-d">a</div>
+        </div>
     </nav>
 </div>
