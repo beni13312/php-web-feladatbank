@@ -15,19 +15,24 @@ session_start();
 </head>
 <body>
 <?php require "header/header.php"?>
-    <div class="body">
-        <form method="POST" action="auth.php">
-            <input type="text" name="uname" id="admin-uname" placeholder="Felhasználó név">
-            <input type="password" name="password" id="admin-password" placeholder="Jelszó">
+    <div class="body" id="admin-body">
+        <form method="POST" action="auth.php" id="form">
+            <h2 id="admin-title">Admin felület</h2>
+            <label for="admin-uname"></label><input type="text" name="uname" id="admin-uname" placeholder="Felhasználó név">
+            <label for="admin-password"></label><input type="password" name="password" id="admin-password" placeholder="Jelszó">
+            <input type="hidden" name="password" id="hashed-password">
             <input type="submit" name="submit" id="admin-submit" value="Bejelentkezés">
+
+            <div id="admin-message">
+                <?php
+                if(isset($_SESSION['error'])){
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
+                }
+                ?>
+            </div>
         </form>
-        <div id="admin-message">
-            <?php
-            if(isset($_SESSION['error'])){
-                echo $_SESSION['error'];
-            }
-            ?>
-        </div>
+
     </div>
 <?php require "footer/footer.php"?>
 

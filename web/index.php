@@ -13,6 +13,9 @@
     <?php require "header/header.php"?>
     <div class="body">
 
+    <div id="category">
+
+    </div>
     </div>
     <?php require "footer/footer.php"?>
 </body>
