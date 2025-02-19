@@ -3,10 +3,10 @@ create database if not exists feladatbank character set utf8 collate utf8mb3_hun
 use feladatbank;
 
 
-create table if not exists felhasznalok(
+create table if not exists admin_felhasznalok(
     id int primary key auto_increment,
     fnev varchar(50) not null unique,
-    jelszo varchar(500) not null,
+    jelszo varchar(80) not null,
     ido timestamp default current_timestamp
 );
 
