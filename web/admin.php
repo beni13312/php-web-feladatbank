@@ -18,9 +18,8 @@ session_start();
     <div class="body" id="admin-body">
         <form method="POST" action="auth.php" id="form">
             <h2 id="admin-title">Admin felület</h2>
-            <label for="admin-uname"></label><input type="text" name="uname" id="admin-uname" placeholder="Felhasználó név">
+            <label for="admin-uname"></label><input type="text" name="username" id="admin-uname" placeholder="Felhasználó név">
             <label for="admin-password"></label><input type="password" name="password" id="admin-password" placeholder="Jelszó">
-            <input type="hidden" name="password" id="hashed-password">
             <input type="submit" name="submit" id="admin-submit" value="Bejelentkezés">
 
             <div id="admin-message">
