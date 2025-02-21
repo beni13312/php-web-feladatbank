@@ -1,4 +1,4 @@
-create database if not exists feladatbank character set utf8 collate utf8mb4_hungarian_ci;
+create database if not exists feladatbank character set utf8 collate utf8mb3_hungarian_ci;
 
 use feladatbank;
 
@@ -6,7 +6,7 @@ use feladatbank;
 create table if not exists admin_felhasznalok( -- admin felhasználók
     id int primary key auto_increment,
     fnev varchar(50) not null unique,
-    jelszo varchar(80) not null,
+    jelszo varchar(150) not null,
     ido timestamp default current_timestamp
 );
 
@@ -26,7 +26,7 @@ create table if not exists szint( -- nehézségi szint pl.: alapszint
 create table if not exists feladat_csoport( -- belső csoportosítás pl.: Python
     id int primary key auto_increment,
     kat_id int not null,
-    csoport varchar(50) not null unique ,
+    csoport varchar(125) not null unique ,
     ido timestamp default current_timestamp,
     foreign key (kat_id) references kategoria(id) on delete cascade
 );
