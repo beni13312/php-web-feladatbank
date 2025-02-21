@@ -35,12 +35,14 @@ create table if not exists feladatok(
     id int primary key auto_increment,
     kat_id int not null,
     szint_id int not null,
+    csoport_id int not null,
     cim varchar(125) not null,
     leiras text,
     feladat text not null,
     ido timestamp default current_timestamp,
     foreign key (kat_id) references kategoria(id) on delete cascade,
-    foreign key (szint_id) references szint(id) on delete cascade
+    foreign key (szint_id) references szint(id) on delete cascade,
+    foreign key (csoport_id) references feladat_csoport(id) on delete cascade
 
 );
 
