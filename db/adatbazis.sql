@@ -20,10 +20,6 @@ create table if not exists szint( -- nehézségi szint
     szint varchar(50) not null unique
 );
 
-create table if not exists feladatsor_feladat(
-    feladat_id int not null,
-    feladatsor_id int not null
-);
 
 create table if not exists feladatok(
     id int primary key auto_increment,
@@ -31,22 +27,18 @@ create table if not exists feladatok(
     szint_id int not null,
     cim varchar(125) not null,
     leiras text,
-    ido timestamp default current_timestamp
-
-);
-
-create table if not exists feladatsor(
-    id int primary key auto_increment,
-    szint_id int not null,
-    kat_id int not null,
-    cim varchar(125) not null,
     feladat text not null,
-    ido timestamp default current_timestamp
+    ido timestamp default current_timestamp,
+    foreign key (kat_id) references kategoria(id) on delete restrict,
+    foreign key (szint_id) references szint(id) on delete restrict
 
 );
+
 create table if not exists megoldasok( -- megoldások
     id int primary key auto_increment,
     feladat_id int not null,
     megoldas text not null,
-    ido timestamp default current_timestamp
+    ido timestamp default current_timestamp,
+    foreign key (feladat_id) references feladatok(id) on delete restrict
+
 );

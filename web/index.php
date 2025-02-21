@@ -15,7 +15,7 @@
     <h1 id="cat-title">Kategóriák</h1>
     <div id="category">
         <div class="category-element">Hálózat</div>
-        <div class="category-element">Programozás</div>
+        <div class="category-element">Adatbázis</div>
         <div class="category-element">Programozás</div>
         <div class="category-element">Programozás</div>
         <div class="category-element">Programozás</div>
