@@ -68,6 +68,25 @@
     margin: 20px;
 }
 
+/* index.php */
+
+#category{
+    display: grid;
+
+}
+.category-element{
+    margin: 10px;
+    border: 2px;
+    background-color: #adacac;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    width: 150px;
+    height: 50px;
+}
+
 /* info.php */
 
 #info-leiras p{

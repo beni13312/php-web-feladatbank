@@ -14,7 +14,10 @@
     <div class="body">
 
     <div id="category">
-
+        <div class="category-element">Hálózat</div>
+        <div class="category-element">Programozás</div>
+        <div class="category-element">Szerverek és felhőszolgáltatások</div>
+        <div class="category-element">Hálózat</div>
     </div>
     </div>
     <?php require "footer/footer.php"?>

@@ -31,7 +31,8 @@ create table if not exists feladatok(
     szint_id int not null,
     cim varchar(125) not null,
     leiras text,
-    ido timestamp default current_timestamp
+    ido timestamp default current_timestamp,
+    foreign key f
 
 );
 
