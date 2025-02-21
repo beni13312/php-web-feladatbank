@@ -12,14 +12,24 @@ create table if not exists admin_felhasznalok( -- admin felhasználók
 
 create table if not exists kategoria( -- kategória
     id int primary key auto_increment,
-    nev varchar(50) not null unique
+    kategoria varchar(50) not null unique,
+    ido timestamp default current_timestamp
 );
 
 create table if not exists szint( -- nehézségi szint
     id int primary key auto_increment,
-    szint varchar(50) not null unique
+    szint varchar(50) not null unique,
+    ido timestamp default current_timestamp
 );
 
+
+create table if not exists feladat_csoport(
+    id int primary key auto_increment,
+    kat_id int not null,
+    csoport varchar(50) not null unique ,
+    ido timestamp default current_timestamp,
+    foreign key (kat_id) references kategoria(id) on delete cascade
+);
 
 create table if not exists feladatok(
     id int primary key auto_increment,
@@ -29,8 +39,8 @@ create table if not exists feladatok(
     leiras text,
     feladat text not null,
     ido timestamp default current_timestamp,
-    foreign key (kat_id) references kategoria(id) on delete restrict,
-    foreign key (szint_id) references szint(id) on delete restrict
+    foreign key (kat_id) references kategoria(id) on delete cascade,
+    foreign key (szint_id) references szint(id) on delete cascade
 
 );
 
@@ -39,6 +49,6 @@ create table if not exists megoldasok( -- megoldások
     feladat_id int not null,
     megoldas text not null,
     ido timestamp default current_timestamp,
-    foreign key (feladat_id) references feladatok(id) on delete restrict
+    foreign key (feladat_id) references feladatok(id) on delete cascade
 
 );
