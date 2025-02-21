@@ -12,12 +12,20 @@
 <body>
     <?php require "header/header.php"?>
     <div class="body">
-
+    <h1 id="cat-title">Kategóriák</h1>
     <div id="category">
         <div class="category-element">Hálózat</div>
         <div class="category-element">Programozás</div>
+        <div class="category-element">Programozás</div>
+        <div class="category-element">Programozás</div>
+        <div class="category-element">Programozás</div>
+        <div class="category-element">Programozás</div>
+        <div class="category-element">Programozás</div>
+        <div class="category-element">Programozás</div>
+        <div class="category-element">Programozás</div>
+        <div class="category-element">Programozás</div>
+        <div class="category-element">Programozás</div>
         <div class="category-element">Szerverek és felhőszolgáltatások</div>
-        <div class="category-element">Hálózat</div>
     </div>
     </div>
     <?php require "footer/footer.php"?>
