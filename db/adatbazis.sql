@@ -1,4 +1,4 @@
-create database if not exists feladatbank character set utf8 collate utf8mb3_hungarian_ci;
+create database if not exists feladatbank character set utf8 collate utf8mb4_hungarian_ci;
 
 use feladatbank;
 
