@@ -20,6 +20,9 @@
         </form>
     </div>
     </div>
+    <div id="admin-dashboard">
+
+    </div>
 
 </div>
 <?php require "footer/footer.php"?>
