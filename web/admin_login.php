@@ -12,7 +12,7 @@
 <body>
 <?php require "header/header.php"?>
 <div class="body" id="admin-body">
-    <form method="POST" action="auth.php" id="form">
+    <form method="POST" action="login.php" id="form">
         <h2 id="admin-title">Admin felület</h2>
         <label for="admin-uname"></label><input type="text" name="username" id="admin-uname" placeholder="Felhasználó név">
         <label for="admin-password"></label><input type="password" name="password" id="admin-password" placeholder="Jelszó">

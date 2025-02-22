@@ -17,7 +17,6 @@ if(empty($username) || empty($password)){
 }
 
 
-
 include("conn.php");
 global $conn;
 // lekérdezés, prepare() - sql parancsok kiszűrése
@@ -47,7 +46,5 @@ if(mysqli_num_rows($result) == 1){
     header('Location: admin.php');
     exit;
 }
-
-
 
 $query->close();

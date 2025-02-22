@@ -12,6 +12,12 @@
 <body>
 <?php require "header/header.php"?>
 <div class="body">
+    <h1>Admin felület</h1>
+    <div>
+        <form method="POST" action="logout.php">
+            <input type="submit" name="submit" value="Kijelentkezés" id="admin-logout">
+        </form>
+    </div>
 
 </div>
 <?php require "footer/footer.php"?>
