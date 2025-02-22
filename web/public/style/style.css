@@ -178,3 +178,24 @@
 #admin-submit:hover{
     background-color: rgb(196, 196, 196);
 }
+
+/* admin_dash.php */
+
+#admin-flexbox{
+    display: flex;
+    justify-content: space-between;
+}
+#admin-logout{
+    display: flex;
+    justify-content: flex-end;
+}
+#admin-submit-logout{
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+    background-color: rgb(227, 227, 227);
+}
+#admin-submit-logout:hover{
+    background-color: rgb(196, 196, 196);
+}

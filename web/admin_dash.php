@@ -12,11 +12,13 @@
 <body>
 <?php require "header/header.php"?>
 <div class="body">
+    <div id="admin-flexbox">
     <h1>Admin felület</h1>
-    <div>
+    <div id="admin-logout">
         <form method="POST" action="logout.php">
-            <input type="submit" name="submit" value="Kijelentkezés" id="admin-logout">
+            <input type="submit" name="submit" value="Kijelentkezés" id="admin-submit-logout">
         </form>
+    </div>
     </div>
 
 </div>
