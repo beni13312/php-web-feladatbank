@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 if($_SERVER['REQUEST_METHOD'] !== 'POST'){
@@ -18,7 +19,8 @@ if(empty($username) || empty($password)){
 
 
 include("conn.php");
-// lekérdezés prepare(),
+global $conn;
+// lekérdezés, prepare() - sql parancsok kiszűrése
 
 $sql = "SELECT fnev, jelszo FROM admin_felhasznalok WHERE fnev= ?";
 $query = $conn->prepare($sql);
@@ -30,7 +32,11 @@ if(mysqli_num_rows($result) == 1){
     $row = $result->fetch_assoc();
 
     if($row['fnev'] && password_verify($password, $row['jelszo'])){
-        echo "user valid";
+        session_regenerate_id(true);
+        $_SESSION['authorized'] = [$username,true];
+        $_SESSION['session_id'] = hash('sha256', uniqid(mt_rand(), true));
+        header('Location: admin.php?dashboard');
+        exit;
     }else{
         $_SESSION['error'] = "Felhasználó név vagy a jelszó helytelen!";
         header('Location: admin.php');
