@@ -14,18 +14,19 @@
     <div class="body">
     <h1 id="cat-title">Kategóriák</h1>
     <div id="category">
-        <div class="category-element">Hálózat</div>
-        <div class="category-element">Adatbázis</div>
-        <div class="category-element">Programozás</div>
-        <div class="category-element">Programozás</div>
-        <div class="category-element">Programozás</div>
-        <div class="category-element">Programozás</div>
-        <div class="category-element">Programozás</div>
-        <div class="category-element">Programozás</div>
-        <div class="category-element">Programozás</div>
-        <div class="category-element">Programozás</div>
-        <div class="category-element">Programozás</div>
-        <div class="category-element">Szerverek és felhőszolgáltatások</div>
+        <?php
+        include("conn.php");
+        global $conn;
+
+        $sql = "SELECT kategoria FROM kategoria ORDER BY kategoria DESC";
+        $query = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($query) > 0) {
+            while ($row = mysqli_fetch_assoc($query)) {
+                echo '<div class="category-element">'.$row['kategoria'].'</div>';
+            }
+        }
+            ?>
     </div>
     </div>
     <?php require "footer/footer.php"?>
