@@ -17,7 +17,7 @@ if(empty($username) || empty($password)){
 
 
 
-include("../db/conn.php");
+include("conn.php");
 
 $sql = "SELECT fnev, jelszo FROM admin_felhasznalok WHERE fnev='".$username."'";
 $query = mysqli_query($conn, $sql);
