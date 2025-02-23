@@ -27,7 +27,6 @@
             ?>
         </div>
     </form>
-
 </div>
 <?php require "footer/footer.php"?>
 
