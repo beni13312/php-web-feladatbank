@@ -18,12 +18,12 @@
         include("conn.php");
         global $conn;
 
-        $sql = "SELECT kategoria FROM kategoria ORDER BY kategoria DESC";
+        $sql = "SELECT id, kategoria FROM kategoria ORDER BY kategoria ASC";
         $query = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($query) > 0) {
             while ($row = mysqli_fetch_assoc($query)) {
-                echo '<div class="category-element">'.$row['kategoria'].'</div>';
+                echo '<div class="category-element" id="'.$row['id'].'">'.$row['kategoria'].'</div>';
             }
         }
             ?>
