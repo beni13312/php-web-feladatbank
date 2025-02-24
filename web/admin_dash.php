@@ -1,3 +1,15 @@
+<?php
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    if(!isset($_SESSION['authorized'])){
+        header('Location: admin.php');
+    }
+
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,12 +25,12 @@
 <?php require "header/header.php"?>
 <div class="body">
     <div id="admin-flexbox">
-    <h1>Admin felület</h1>
-    <div id="admin-logout">
-        <form method="POST" action="logout.php">
-            <input type="submit" name="submit" value="Kijelentkezés" id="admin-submit-logout">
-        </form>
-    </div>
+        <h1>Admin felület</h1>
+        <div id="admin-logout">
+            <form method="POST" action="logout.php">
+                <input type="submit" name="submit" value="Kijelentkezés" id="admin-submit-logout">
+            </form>
+        </div>
     </div>
     <div id="admin-dashboard">
 
