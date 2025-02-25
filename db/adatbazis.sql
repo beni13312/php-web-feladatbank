@@ -10,47 +10,54 @@ create table if not exists admin_felhasznalok( -- admin felhasználók
     ido timestamp default current_timestamp
 );
 
-create table if not exists kategoria( -- kategória pl.: hálózat
+
+
+create table if not exists kategoria( -- kategória pl.: Python, feladatok csoportja
     id int primary key auto_increment,
     kategoria varchar(50) not null unique,
     ido timestamp default current_timestamp
 );
 
-create table if not exists szint( -- nehézségi szint pl.: alapszint
-    id int primary key auto_increment,
-    szint varchar(50) not null unique,
-    ido timestamp default current_timestamp
-);
 
 
-create table if not exists feladat_csoport( -- belső csoportosítás pl.: Python
+
+create table if not exists feladat( -- kérdés + válaszok + megoldások csoportja
     id int primary key auto_increment,
     kat_id int not null,
-    csoport varchar(125) not null unique ,
+    kerdes text not null,
     ido timestamp default current_timestamp,
     foreign key (kat_id) references kategoria(id) on delete cascade
+
+
 );
 
-create table if not exists feladatok( -- feladatok
+
+create table if not exists valaszok( -- egy adott feladat válasza/válaszai
     id int primary key auto_increment,
-    kat_id int not null,
-    szint_id int not null,
-    csoport_id int not null,
-    cim varchar(125) not null,
-    leiras text,
-    feladat text not null,
-    ido timestamp default current_timestamp,
-    foreign key (kat_id) references kategoria(id) on delete cascade,
-    foreign key (szint_id) references szint(id) on delete cascade,
-    foreign key (csoport_id) references feladat_csoport(id) on delete cascade
+    valasz text not null,
+    ido timestamp default current_timestamp
 
 );
 
 create table if not exists megoldasok( -- megoldások
     id int primary key auto_increment,
-    feladat_id int not null,
     megoldas text not null,
-    ido timestamp default current_timestamp,
-    foreign key (feladat_id) references feladatok(id) on delete cascade
+    ido timestamp default current_timestamp
+);
 
+create table if not exists feladat_valasz( -- válaszok kapcsoló tábla, egy feladat több válasz
+    feladat_id int not null,
+    valasz_id int not null,
+    primary key (feladat_id,valasz_id),
+    foreign key (feladat_id) references feladat(id) on delete cascade,
+    foreign key (valasz_id) references valaszok(id) on delete cascade
+
+);
+
+create table if not exists feladat_megoldas( -- megoldások kapcsoló tábla, egy feladat több jó megoldás
+    feladat_id int not null,
+    megoldas_id int not null,
+    primary key (feladat_id, megoldas_id),
+    foreign key (feladat_id) references feladat(id) on delete cascade,
+    foreign key (megoldas_id) references megoldasok(id) on delete cascade
 );

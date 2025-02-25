@@ -1,8 +1,8 @@
 use feladatbank;
 
-insert into kategoria (kategoria) value ("Hálózat");
-insert into kategoria (kategoria) value ("Programozás");
-insert into kategoria (kategoria) value ("Szerverek és felhőszolgáltatások");
-insert into kategoria (kategoria) value ("Adatbázis");
-insert into kategoria (kategoria) value ("Hardver ismeretek");
-insert into kategoria (kategoria) value ("Weboldal fejlesztés");
+insert into kategoria (kategoria) value ('HTML');
+insert into kategoria (kategoria) value ('CSS');
+insert into kategoria (kategoria) value ('JavaScript');
+insert into kategoria (kategoria) value ('SQL');
+insert into kategoria (kategoria) value ('PHP');
+insert into kategoria (kategoria) value ('Python');

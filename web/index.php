@@ -18,7 +18,7 @@
         include("conn.php");
         global $conn;
 
-        $sql = "SELECT id, kategoria FROM kategoria ORDER BY kategoria ASC";
+        $sql = "SELECT id, kategoria FROM kategoria ORDER BY id";
         $query = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($query) > 0) {
