@@ -23,7 +23,7 @@
 
         if (mysqli_num_rows($query) > 0) {
             while ($row = mysqli_fetch_assoc($query)) {
-                echo '<div class="category-element" id="'.$row['id'].'">'.$row['kategoria'].'</div>';
+                echo '<div class="category-element" id="cat-'.$row['id'].'">'.$row['kategoria'].'</div>';
             }
         }
             ?>

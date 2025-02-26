@@ -19,7 +19,7 @@
         <div id="exam-szamlalo">
 
         </div>
-        <div id="exam-valaszok">
+        <div id="exam-answers">
             <form id="exam-form" action="check_ans.php" method="post">
                 <div class="exam-ans-one">
                     <div class="exam-ans" id="x1"><input type="radio" name="ans">x</div>

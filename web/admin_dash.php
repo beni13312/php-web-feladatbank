@@ -32,13 +32,22 @@ if(!isset($_SESSION['authorized'])){
         </div>
     </div>
     <div id="admin-dashboard">
-        <div id="admindash-feladatok">
+        <div id="admindash-exams">
 
         </div>
-        <div id="admindash-hozzaadas">
+        <div id="admindash-add">
             <form action="add_exam.php" method="post">
-                <input type="text" name="exam" id="exam" placeholder="Exam">
-                <input type="submit" name="exam-submit" id="exam" placeholder="Exam">
+                <input type="text" name="exam-question" id="admindash-question">
+                <div id="admindash-anss">
+                    <div id="admindash-ans-n">
+                        <div class="admindash-ans" id="x">...</div>
+                    </div>
+                    <div id="admindash-ans-addrm">
+                        <input type="button" id="admindash-ans-add" name="ans-add" value="+"">
+                        <input type="button" id="admindash-ans-rm" name="ans-rm" value="-"">
+                    </div>
+                </div>
+                <input type="submit" name="exam-submit" id="exam" placeholder="Hozzáadás">
             </form>
         </div>
 
