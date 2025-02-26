@@ -32,7 +32,7 @@ if(mysqli_num_rows($result) == 1){
 
     if($row['fnev'] && password_verify($password, $row['jelszo'])){
         session_regenerate_id(true);
-        $_SESSION['authorized'] = [$username,true];
+        $_SESSION['authorized'] = $username;
         $_SESSION['session_id'] = hash('sha256', uniqid(mt_rand(), true));
         header('Location: admin.php?dashboard');
         exit;
