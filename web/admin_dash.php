@@ -32,7 +32,14 @@ if(!isset($_SESSION['authorized'])){
         </div>
     </div>
     <div id="admin-dashboard">
+        <div id="admindash-feladatok"></div>
+        <div id="admindash-hozzaadas">
+            <form action="add_exam.php" method="post">
+                <input type="text" name="exam" id="exam" placeholder="Exam"
+            </form>
+        </div>
 
+        </div>
     </div>
 
 </div>

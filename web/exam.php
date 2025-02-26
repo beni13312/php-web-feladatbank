@@ -11,6 +11,30 @@
 </head>
 <body>
 <?php require "header/header.php"?>
+<div class="body">
+    <div id="exam-feladat">
+        <div id="exam-kerdes">
+
+        </div>
+        <div id="exam-szamlalo">
+
+        </div>
+        <div id="exam-valaszok">
+            <form id="exam-form" action="check_ans.php" method="post">
+                <div class="exam-valasz-egy">
+                    <div class="exam-ans"><input type="radio" name="ans">x</div>
+                    <div class="exam-ans"><input type="radio" name="ans">x</div>
+                    <div class="exam-ans"><input type="radio" name="ans">x</div>
+                </div>
+                <div class="exam-valasz-tobb">
+                    <div class="exam-ans"><input type="checkbox" name="ans">x</div>
+                    <div class="exam-ans"><input type="checkbox" name="ans">x</div>
+                    <div class="exam-ans"><input type="checkbox" name="ans">x</div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <?php require "footer/footer.php"?>
 
