@@ -6,8 +6,7 @@
         </div>
         <div id="nav-right">
             <div class="nav-d" id="nav-info">Információ</div>
-            <div class="nav-d"></div>
-            <div class="nav-d"></div>
+
         </div>
     </nav>
 </div>
