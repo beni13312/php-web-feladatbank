@@ -22,15 +22,16 @@
         <div id="exam-valaszok">
             <form id="exam-form" action="check_ans.php" method="post">
                 <div class="exam-valasz-egy">
-                    <div class="exam-ans"><input type="radio" name="ans">x</div>
-                    <div class="exam-ans"><input type="radio" name="ans">x</div>
-                    <div class="exam-ans"><input type="radio" name="ans">x</div>
+                    <div class="exam-ans" id="x1"><input type="radio" name="ans">x</div>
+                    <div class="exam-ans" id="x2"><input type="radio" name="ans">x</div>
+                    <div class="exam-ans" id="x3"><input type="radio" name="ans">x</div>
                 </div>
                 <div class="exam-valasz-tobb">
-                    <div class="exam-ans"><input type="checkbox" name="ans">x</div>
-                    <div class="exam-ans"><input type="checkbox" name="ans">x</div>
-                    <div class="exam-ans"><input type="checkbox" name="ans">x</div>
+                    <div class="exam-ans" id="x1"><input type="checkbox" name="ans">x</div>
+                    <div class="exam-ans" id="x2"><input type="checkbox" name="ans">x</div>
+                    <div class="exam-ans" id="x3"><input type="checkbox" name="ans">x</div>
                 </div>
+                <input id="exam-check" type="submit" name="exam-submit" value="Ellenörzés">
             </form>
         </div>
     </div>
