@@ -37,13 +37,20 @@ if(!isset($_SESSION['authorized'])){
         </div>
         <div id="admindash-add">
             <form action="add_exam.php" method="post">
+                <div class="admindash-cat-container">
+                    <select name="category" id="admindash-cat">
+                        <option value="x1">x1</option>
+                        <option value="x2">x2</option>
+                        <option value="x3">x3</option>
+                    </select>
+                </div>
                 <div class="admindash-question">
                     <input type="text" name="exam-question" id="admindash-question">
                 </div>
 
                 <div id="admindash-anss">
                     <div id="admindash-ans-n">
-                        <div class="admindash-ans"><input type="text" id="x"><input type="checkbox" class="admindash-ans-res" name="result"></div>
+                        <div class="admindash-ans"><input type="text" id="x"><input type="checkbox" class="admindash-ans-res" name="isResult"></div>
                     </div>
                     <div id="admindash-ans-addrm">
                         <input type="button" id="admindash-ans-add" name="ans-add" value="+"">
