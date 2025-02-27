@@ -1,5 +1,16 @@
 use feladatbank;
 
+
+/* kategóriák beszúrása */
+
+insert into kategoria (kategoria) value ('HTML');
+insert into kategoria (kategoria) value ('CSS');
+insert into kategoria (kategoria) value ('JavaScript');
+insert into kategoria (kategoria) value ('SQL');
+insert into kategoria (kategoria) value ('PHP');
+insert into kategoria (kategoria) value ('Python');
+
+
 /* Példa:
    Python:
    Mi a jele az egysoros kommentnek?
@@ -7,13 +18,13 @@ use feladatbank;
    megoldás: #
    */
 
-
 set @kategoria = 'Python';
 set @valasz1 = '//';
 set @valasz2 = '#';
 set @valasz3 = '--';
 set @kerdes = 'Mi a jele az egysoros kommentnek?';
 set @megoldas = '#';
+
 
 insert into valaszok (valasz) values (@valasz1),(@valasz2),(@valasz3); -- választási lehetőségek
 
