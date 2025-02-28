@@ -133,6 +133,9 @@
 .category-element:hover{
     --a:180deg;
 }
+.category-element-a{
+    text-decoration: none;
+}
 
 /* info.php */
 
