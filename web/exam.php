@@ -18,10 +18,18 @@ if(isset($_GET["cat"])){
 </head>
 <body>
 <?php require "header/header.php"?>
+<?php include "conn.php"; global $conn; ?>
 <div class="body">
     <div id="exam-feladat">
         <div id="exam-kerdes">
-
+            <?php
+            $sql = "SELECT kerdes FROM feladat where kat_id = ?";
+            $result = $conn->prepare($sql);
+            $result->bind_param("i", $category);
+            $result->execute();
+            $row = $result->get_result()->fetch_assoc();
+            echo $row['kerdes'];
+            ?>
         </div>
         <div id="exam-szamlalo">
 
