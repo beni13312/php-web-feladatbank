@@ -1,3 +1,10 @@
+<?php
+if(isset($_GET["cat"])){
+    $category = $_GET["cat"];
+}else{
+    header('location: index.php');
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
