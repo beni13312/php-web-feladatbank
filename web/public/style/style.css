@@ -35,7 +35,7 @@
     background: rgb(255,166,0);
     -webkit-user-select: none;
     color: white;
-    background: linear-gradient(90deg, rgba(255,166,0,1) 0%, rgba(224,13,13,1) 100%);
+    background: linear-gradient(90deg, rgb(0, 151, 45) 0%, rgb(13, 52, 224) 100%);
 }
 #navbar{
     display: flex;
@@ -123,7 +123,7 @@
     --a:10deg;
     cursor:pointer;
     transition:--a 0.5s;
-    background: #c5c3c3 linear-gradient(var(--a), rgba(255, 166, 0, 1), rgba(224, 13, 13, 1));
+    background: #c5c3c3 linear-gradient(var(--a), rgba(0, 151, 45, 1), rgba(13, 52, 224, 1));
 }
 @property --a {
     syntax: '<angle>';
@@ -144,32 +144,54 @@
     margin-top: 20px;
 }
 
-/* admin.php */
+/* admin_login.php */
 
 #admin-message{
     color: red;
     margin: 10px;
 }
 #admin-body{
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 80vh;
+    flex-direction: column;
 }
 #admin-title{
     text-align: center;
-    margin: 20px;
-    font-size: 30px;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
 }
-#form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 300px;
+#login-form{
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    max-width: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
 }
-#form input{
-    margin: 2px;
-    height: 20px;
-    font-size: 16px;
+#login-form input{
+    width: calc(100% - 1.6rem);
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 #admin-submit{
     cursor: pointer;
     border: none;
