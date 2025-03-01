@@ -5,6 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 if(!isset($_SESSION['authorized'])){
     header('Location: admin.php');
+    exit;
 }
 
 ?>
