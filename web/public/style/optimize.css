@@ -1,0 +1,16 @@
+@media (max-width: 469px) {
+    body{
+        font-size: 1.5rem;
+    }
+    #category a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .category-element {
+        min-width: 300px;
+        min-height: 100px;
+    }
+}

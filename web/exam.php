@@ -7,9 +7,12 @@ if(isset($_GET["cat"])){
     header('location: index.php');
     exit;
 }
-if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){
+if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){ // ha más kat_id akkor töröljük a session-t, mivel a feladat.id külömböző
     unset($_SESSION['feladat']);
+    unset($_SESSION['feladat_index']);
+
     $_SESSION['category'] = $category;
+
 }
 ?>
 <!doctype html>
@@ -49,12 +52,19 @@ if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){
             $query->execute();
             $row= $query->get_result()->fetch_assoc();
 
-            echo $row['kerdes'];
+            echo $row['kerdes']; // kérdés kiíratása
             ?>
         </div>
         <div id="exam-szamlalo">
              <?php
+             $sql_szam = "SELECT COUNT(feladat.id) AS 'szam'
+                            FROM feladat WHERE feladat.kat_id=?";
+             $query = $conn->prepare($sql_szam);
+             $query->bind_param("i", $category);
+             $query->execute();
+             $row= $query->get_result()->fetch_assoc();
 
+             echo $_SESSION['feladat_index']."/".$row['szam']; // feladatszámláló pl.: 1/3
              ?>
         </div>
         <div id="exam-answers">

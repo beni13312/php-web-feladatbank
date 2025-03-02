@@ -10,3 +10,18 @@
         </div>
     </nav>
 </div>
+<script>
+    function updateTitle() {
+        const titleElement = document.getElementById("nav-title");
+        if (window.innerWidth < 512) {
+            titleElement.textContent = "INFOGY";
+        } else {
+            titleElement.textContent = "Informatikai Feladat gyűjtemény";
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", updateTitle);
+
+    window.addEventListener("resize", updateTitle);
+
+</script>
