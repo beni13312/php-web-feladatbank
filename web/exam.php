@@ -74,31 +74,26 @@ if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){ // ha 
                         where feladat.kat_id=? and
                         feladat.id = ? and 
                         feladat.id = feladat_megoldas.feladat_id and
-                        feladat_megoldas.megoldas_id = megoldas.id";
+                        feladat_megoldas.megoldas_id = megoldasok.id";
             $query = $conn->prepare($sql_ans);
             $query->bind_param("ii", $category,$_SESSION['feladat']);
             $query->execute();
-            $result= $query->get_result();
-            
-            $multiple_sol = false;
-            while($row= $result->fetch_assoc()){
-
-            }
-
+            $result = $query->get_result();
+            $multiple_sol = $result->num_rows > 1;
             ?>
-
             <form id="exam-form" action="check_ans.php" method="POST">
-                <div class="exam-ans-one">
-                    <div class="exam-ans" id="x1"><input type="radio" name="ans">x</div>
-                    <div class="exam-ans" id="x2"><input type="radio" name="ans">x</div>
-                    <div class="exam-ans" id="x3"><input type="radio" name="ans">x</div>
-                </div>
-                <div class="exam-ans-more">
-                    <div id="exam-ans-title">Több megoldás</div>
-                    <div class="exam-ans" id="x1"><input type="checkbox" name="ans">x</div>
-                    <div class="exam-ans" id="x2"><input type="checkbox" name="ans">x</div>
-                    <div class="exam-ans" id="x3"><input type="checkbox" name="ans">x</div>
-                </div>
+                <?php
+                if($multiple_sol){
+                    echo '<div class="exam-ans-more">';
+                        echo '<div id="exam-ans-title">Több megoldás</div>';
+                        echo '<div class="exam-ans" id="x1"><input type="checkbox" name="ans">x</div>';
+                    echo '</div>';
+                }else{
+                    echo '<div class="exam-ans-one">';
+                        echo '<div class="exam-ans" id="x1"><input type="radio" name="ans">x</div>';
+                    echo '</div>';
+                }
+                ?>
                 <input id="exam-check" type="submit" name="exam-submit" value="Ellenörzés">
             </form>
         </div>
