@@ -79,7 +79,7 @@ if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){ // ha 
             $query->bind_param("ii", $category,$_SESSION['feladat']);
             $query->execute();
             $result = $query->get_result();
-            $multiple_sol = $result->num_rows > 1;
+            $multiple_sol = $result->num_rows > 1; // ha több mint egy megoldas van
             ?>
             <form id="exam-form" action="check_ans.php" method="POST">
                 <?php
