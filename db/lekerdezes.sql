@@ -19,12 +19,14 @@ where feladat.kat_id=6 and
 order by feladat.id ASC;
 
 -- kerdések
+-- 6 = Python
 select feladat.id, feladat.kerdes
 from feladatbank.feladat
 where feladat.kat_id=6
 order by feladat.id ASC;
 
 -- válaszok
+-- 6 = Python
 select feladat.id,valaszok.valasz
 from feladatbank.feladat, feladatbank.valaszok, feladatbank.feladat_valasz
 where feladat.kat_id=6 and
@@ -33,6 +35,7 @@ where feladat.kat_id=6 and
 order by feladat.id ASC;
 
 -- megoldások
+-- 6 = Python
 select feladat.id, megoldasok.megoldas
 from feladatbank.feladat, feladatbank.megoldasok, feladatbank.feladat_megoldas
 where feladat.kat_id=6 and
