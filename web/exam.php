@@ -32,7 +32,7 @@ if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){ // ha 
 <div class="body">
     <div id="exam-feladat">
         <?php
-        if(!isset($_SESSION['feladat']) ){
+        if(!isset($_SESSION['feladat']) ){ // ha nincsen feladat session akkor létrehozunk egyet, a kezdőérékte a táblából a legkisebb id
             $sql_id = "SELECT feladat.id
                             FROM feladat WHERE feladat.kat_id=? 
                             ORDER BY feladat.id ASC LIMIT 1";
@@ -40,8 +40,8 @@ if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){ // ha 
             $query->bind_param("i", $category);
             $query->execute();
             $row = $query->get_result()->fetch_assoc();
-            $_SESSION['feladat'] = $row['id'];
-            $_SESSION['feladat_index'] = 1;
+            $_SESSION['feladat'] = $row['id']; // feladat id
+            $_SESSION['feladat_index'] = 1; // feladat száma
         }?>
         <div id="exam-kerdes">
         <?php
@@ -68,13 +68,33 @@ if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){ // ha 
              ?>
         </div>
         <div id="exam-answers">
-            <form id="exam-form" action="check_ans.php" method="post">
+            <?php
+            $sql_ans = "select megoldasok.megoldas
+                        from feladat, megoldasok, feladat_megoldas
+                        where feladat.kat_id=? and
+                        feladat.id = ? and 
+                        feladat.id = feladat_megoldas.feladat_id and
+                        feladat_megoldas.megoldas_id = megoldas.id";
+            $query = $conn->prepare($sql_ans);
+            $query->bind_param("ii", $category,$_SESSION['feladat']);
+            $query->execute();
+            $result= $query->get_result();
+            
+            $multiple_sol = false;
+            while($row= $result->fetch_assoc()){
+
+            }
+
+            ?>
+
+            <form id="exam-form" action="check_ans.php" method="POST">
                 <div class="exam-ans-one">
                     <div class="exam-ans" id="x1"><input type="radio" name="ans">x</div>
                     <div class="exam-ans" id="x2"><input type="radio" name="ans">x</div>
                     <div class="exam-ans" id="x3"><input type="radio" name="ans">x</div>
                 </div>
                 <div class="exam-ans-more">
+                    <div id="exam-ans-title">Több megoldás</div>
                     <div class="exam-ans" id="x1"><input type="checkbox" name="ans">x</div>
                     <div class="exam-ans" id="x2"><input type="checkbox" name="ans">x</div>
                     <div class="exam-ans" id="x3"><input type="checkbox" name="ans">x</div>
