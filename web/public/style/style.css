@@ -223,3 +223,6 @@
 #admin-submit-logout:hover{
     background-color: rgb(196, 196, 196);
 }
+#admindash-add{
+    margin-top: 20px;
+}
