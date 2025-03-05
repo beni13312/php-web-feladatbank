@@ -13,7 +13,7 @@
 <script>
     function updateTitle() {
         const titleElement = document.getElementById("nav-title");
-        if (window.innerWidth < 512) {
+        if (window.innerWidth < 594) {
             titleElement.textContent = "INFOGY";
         } else {
             titleElement.textContent = "Informatikai Feladat gyűjtemény";

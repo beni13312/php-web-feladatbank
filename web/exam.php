@@ -69,11 +69,11 @@ if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){ // ha 
         </div>
         <div id="exam-answers">
             <?php
-            $sql_ans = "SELECT megoldasok.megoldas
-                        FROM feladat, megoldasok, feladat_megoldas
-                        WHERE feladat.kat_id=? AND
-                        feladat.id = ? AND 
-                        feladat.id = feladat_megoldas.feladat_id AND
+            $sql_ans = "select megoldasok.megoldas
+                        from feladat, megoldasok, feladat_megoldas
+                        where feladat.kat_id=? and
+                        feladat.id = ? and 
+                        feladat.id = feladat_megoldas.feladat_id and
                         feladat_megoldas.megoldas_id = megoldasok.id";
             $query = $conn->prepare($sql_ans);
             $query->bind_param("ii", $category,$_SESSION['feladat']);

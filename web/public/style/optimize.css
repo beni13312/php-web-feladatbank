@@ -10,7 +10,29 @@
     }
 
     .category-element {
-        min-width: 300px;
-        min-height: 100px;
+        min-width: 250px;
+        min-height: 70px;
+        align-items: center;
+        justify-content: center;
+
+    }
+}
+@media (max-width: 664px) {
+    body{
+        font-size: 1.1rem;
+    }
+    #category {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px; /* Több hely a gombok között */
+	}
+
+    .category-element {
+        min-width: 250px;
+        min-height: 70px;
+        align-items: center;
+        justify-content: center;
+
     }
 }
