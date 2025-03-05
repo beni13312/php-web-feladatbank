@@ -59,8 +59,8 @@ if(!isset($_SESSION['authorized'])){
 
                 <div id="admindash-anss">
                     <div id="admindash-ans-n">
-                        <div class="admindash-ans"><input type="text" id="ans-1" name="1" placeholder="Válasz1"><input type="checkbox" class="admindash-ans-res" name="isResult-1"></div>
-                        <div class="admindash-ans"><input type="text" id="ans-2" name="2" placeholder="Válasz2"><input type="checkbox" class="admindash-ans-res" name="isResult-2"></div>
+                        <div class="admindash-ans"><input type="text" id="ans-1" name="ans-1" placeholder="Válasz1"><input type="checkbox" class="admindash-ans-sol" name="isSol-1"></div>
+                        <div class="admindash-ans"><input type="text" id="ans-2" name="ans-2" placeholder="Válasz2"><input type="checkbox" class="admindash-ans-sol" name="isSol-2"></div>
                     </div>
                     <div id="admindash-ans-addrm">
                         <input type="button" id="admindash-ans-add" name="ans-add" value="Hozzáadás">
@@ -68,6 +68,14 @@ if(!isset($_SESSION['authorized'])){
                     </div>
                 </div>
                 <input type="submit" name="exam-submit" id="admindash-submit" placeholder="Hozzáadás">
+                <div id="admin-message">
+                    <?php
+                    if(isset($_SESSION['error'])){
+                        echo $_SESSION['error'];
+                        unset($_SESSION['error']);
+                    }
+                    ?>
+                </div>
             </form>
         </div>
 

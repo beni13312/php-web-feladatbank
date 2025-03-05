@@ -27,8 +27,8 @@ class manage_ans {
             // input-checkbox
             let ans_checkbox = document.createElement("input");
             ans_checkbox.type = "checkbox";
-            ans_checkbox.classList.add("admindash-ans-res");
-            ans_checkbox.name = `isResult-${this.ansid_num}`;
+            ans_checkbox.classList.add("admindash-ans-sol");
+            ans_checkbox.name = `isSol-${this.ansid_num}`;
 
             ans_div.appendChild(ans_input);
             ans_div.appendChild(ans_checkbox);

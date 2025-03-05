@@ -18,7 +18,7 @@
         <label for="admin-password"></label><input type="password" name="password" id="admin-password" placeholder="Jelszó">
         <input type="submit" name="submit" id="admin-submit" value="Bejelentkezés">
 
-        <div id="admin-message">
+        <div class="error-message">
             <?php
             if(isset($_SESSION['error'])){
                 echo $_SESSION['error'];
