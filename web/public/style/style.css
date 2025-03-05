@@ -270,3 +270,26 @@ body{
 #admindash-add{
     margin-top: 20px;
 }
+#admindash-form input, select{
+    padding: 10px;
+    font-size: 1rem;
+}
+#admindash-form input[type=checkbox]{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+#admindash-question{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.admindash-ans{
+    margin:5px;
+}
+#admindash-ans-addrm{
+    margin-top: 10px;
+}
+#admindash-submit{
+    margin-top: 10px;
+}

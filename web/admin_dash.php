@@ -38,9 +38,9 @@ if(!isset($_SESSION['authorized'])){
 
         </div>
         <div id="admindash-add">
-            <form action="add_exam.php" method="post">
+            <form action="add_exam.php" method="post" id="admindash-form">
                 <div class="admindash-cat-container">
-                    <?php $sql_cat= "SELECT kategoria.id, kategoria.kategoria FROM kategoria";
+                    <?php $sql_cat= "SELECT kategoria.id, kategoria.kategoria FROM kategoria order by kategoria.id ASC";
                     $query = mysqli_query($conn,$sql_cat);
 
                     echo '<select name="category" id="admindash-cat">';
@@ -67,7 +67,7 @@ if(!isset($_SESSION['authorized'])){
                         <input type="button" id="admindash-ans-rm" name="ans-rm" value="Törlés">
                     </div>
                 </div>
-                <input type="submit" name="exam-submit" id="exam" placeholder="Hozzáadás">
+                <input type="submit" name="exam-submit" id="admindash-submit" placeholder="Hozzáadás">
             </form>
         </div>
 
