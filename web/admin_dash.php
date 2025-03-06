@@ -34,8 +34,12 @@ if(!isset($_SESSION['authorized'])){
         </div>
     </div>
     <div id="admin-dashboard">
-        <div id="admindash-exams">
-
+        <div id="admindash-exams" style="display: none;">
+            <div class="admindash-exam">
+                <div class="admindash-exam-question"></div>
+                <div class="admindash-exam-ans"></div>
+                <div class="admindash-exam-sol"></div>
+            </div>
         </div>
         <div id="admindash-add">
             <form action="add_exam.php" method="post" id="admindash-form">
@@ -68,7 +72,7 @@ if(!isset($_SESSION['authorized'])){
                     </div>
                 </div>
                 <input type="submit" name="exam-submit" id="admindash-submit" placeholder="Hozzáadás">
-                <div id="admin-message">
+                <div class="error-message">
                     <?php
                     if(isset($_SESSION['error'])){
                         echo $_SESSION['error'];

@@ -31,7 +31,8 @@ insert into valaszok (valasz) values (@valasz1),(@valasz2),(@valasz3); -- válas
 insert into megoldasok (megoldas) values (@megoldas1); -- megoldás/megoldások
 
 insert into feladat (kat_id, kerdes) values (
-                (select kategoria.id from kategoria where kategoria.kategoria = @kategoria),@kerdes);
+                (select kategoria.id from kategoria where kategoria.kategoria = @kategoria),(@kerdes)
+                                            );
 
 insert into feladat_valasz (feladat_id, valasz_id) VALUES
                         (
