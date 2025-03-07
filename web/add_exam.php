@@ -23,7 +23,7 @@ for($sol = 1; $sol<=10; $sol++){
         $solutions[] = $_POST['isSol-'.$sol];
     }
 }
-if($cat || $question || sizeof($answers) < 2 || sizeof($solutions) < 1){ // ellenörzés
+if(!isset($cat) || !isset($question) || sizeof($answers) < 2 || sizeof($solutions) < 1){ // ellenörzés
     $_SESSION['error'] = "Nem lehet egy mező sem üres!!: "."cat:".$cat."question: ".$question."arrays: ".sizeof($answers).":".sizeof($solutions);
     header("Location: admin.php?dashboard");
     exit;
@@ -31,7 +31,7 @@ if($cat || $question || sizeof($answers) < 2 || sizeof($solutions) < 1){ // elle
 
 }else{
     try{
-         // adatok beírása
+        // adatok beírása
         include 'conn.php';
         global $conn;
 
@@ -42,24 +42,19 @@ if($cat || $question || sizeof($answers) < 2 || sizeof($solutions) < 1){ // elle
         $bind_type = "";
 
         for($value = 0; $value < sizeof($answers); $value++){
-            $params .= "(?)";
+            $params .= "(?),";
             $bind_type .= "s";
         }
+        $params = rtrim($params, ",");
+
         $sql_ans = "INSERT INTO valaszok (valasz) VALUES ".$params;
 
-        $answers_refs = [];
-
-        foreach($answers as $ans){
-            $answers_refs[] = &$ans; // hozzáadás memória címmel
-        }
-
         $query = $conn->prepare($sql_ans);
-        $query->bind_param($bind_type,...$answers_refs); // válaszok elhelyezése
+        $query->bind_param($bind_type,...$answers); // válaszok elhelyezése
         $query->execute();
 
         unset($params);
         unset($bind_type);
-        unset($answers_refs);
 
         /* megoldások */
 
@@ -67,24 +62,21 @@ if($cat || $question || sizeof($answers) < 2 || sizeof($solutions) < 1){ // elle
         $bind_type = "";
 
         for($value = 0; $value < sizeof($solutions); $value++){
-            $params .= "(?)";
+            $params .= "(?),";
             $bind_type .= "s";
         }
+
+        $params = rtrim($params, ",");
+
         $sql_sol = "INSERT INTO megoldasok (megoldas) VALUES ".$params;
 
-        $solution_refs = [];
-
-        foreach($solutions as $sol){
-            $solution_refs[] = &$sol; // hozzáadás memória címmel
-        }
 
         $query = $conn->prepare($sql_sol);
-        $query->bind_param($bind_type,...$solution_refs); // válaszok elhelyezése
+        $query->bind_param($bind_type,...$solutions); // válaszok elhelyezése
         $query->execute();
 
         unset($params);
         unset($bind_type);
-        unset($solution_refs);
 
         /* feladat */
 
@@ -98,24 +90,62 @@ if($cat || $question || sizeof($answers) < 2 || sizeof($solutions) < 1){ // elle
 
         /* feladat_valasz */
 
-
-        $sql_feladat_valasz = "INSERT INTO feladat_valasz (feladat_id, valasz_id) VALUES
-                        (
+        $sql_pattern = "(
                         (SELECT feladat.id FROM feladat WHERE kerdes = ?),
-                        (SELECT valaszok.id FROM valaszok WHERE valasz = @valasz1)
-                        ),                        (
-                        (SELECT feladat.id FROM feladat WHERE kerdes = ?),
-                        (SELECT valaszok.id FROM valaszok WHERE valasz = @valasz2)
-                        ),                        (
-                        (SELECT feladat.id FROM feladat WHERE kerdes = ?),
-                        (SELECT valaszok.id FROM valaszok WHERE valasz = @valasz3)
+                        (SELECT valaszok.id FROM valaszok WHERE valasz = ?)
                         )";
+        $params = "";
+        $bind_type = "";
+        $question_ans = array();
+
+        foreach($answers as $ans){
+            $params .= $sql_pattern.",";
+            $bind_type .= "ss";
+            $question_ans[]= $question;
+            $question_ans[]= $ans;
+        }
+        $params = rtrim($params,",");
+
+        $sql_feladat_valasz = "INSERT INTO feladat_valasz (feladat_id, valasz_id) VALUES".$sql_pattern;
 
         $query = $conn->prepare($sql_feladat_valasz);
-        $query->bind_param("is",$cat, $question); // válaszok elhelyezése
+        $query->bind_param($bind_type,...$question_ans);
         $query->execute();
 
+        unset($params);
+        unset($bind_type);
+        unset($sql_pattern);
 
+        /* feladat_megoldas */
+
+        $sql_pattern = "(
+                        (SELECT feladat.id FROM feladat WHERE kerdes = ?),
+                        (SELECT megoldasok.id FROM megoldasok WHERE megoldas = ?)
+                        )";
+        $params = "";
+        $bind_type = "";
+        $question_solution = array();
+
+        foreach($solutions as $sol){
+            $params .= $sql_pattern.",";
+            $bind_type .= "ss";
+            $question_solution[]= $question;
+            $question_solution[]= $sol;
+        }
+        $params = rtrim($params,",");
+
+        $sql_feladat_megoldas = "INSERT INTO feladat_megoldas (feladat_id, megoldas_id) VALUES".$sql_pattern;
+
+        $query = $conn->prepare($sql_feladat_megoldas);
+        $query->bind_param($bind_type,...$question_solution);
+        $query->execute();
+
+        unset($params);
+        unset($bind_type);
+
+        $_SESSION['success'] = "Az adatok bekerültek az adatbázisba!";
+        header("Location: admin.php?dashboard");
+        exit;
     }catch (Exception $e){
         $_SESSION['error'] = $e->getMessage();
     }

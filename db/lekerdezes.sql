@@ -42,3 +42,11 @@ where feladat.kat_id=6 and
       feladat.id = feladat_megoldas.feladat_id and
       feladat_megoldas.megoldas_id = megoldasok.id
 order by feladat.id ASC;
+
+-- csak válaszok
+SELECT valaszok.id, valaszok.valasz
+FROM feladat, valaszok, feladat_valasz
+WHERE feladat.kat_id = ? AND
+    feladat.id = ? AND
+    feladat_valasz.feladat_id = feladat.id AND
+    feladat_valasz.valasz_id = valaszok.id

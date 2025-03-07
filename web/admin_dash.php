@@ -80,6 +80,14 @@ if(!isset($_SESSION['authorized'])){
                     }
                     ?>
                 </div>
+                <div class="success-message">
+                    <?php
+                    if(isset($_SESSION['success'])){
+                        echo $_SESSION['success'];
+                        unset($_SESSION['success']);
+                    }
+                    ?>
+                </div>
             </form>
         </div>
 

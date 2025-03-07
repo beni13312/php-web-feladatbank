@@ -194,6 +194,11 @@ body{
     color: red;
     margin: 10px;
 }
+.success-message{
+    color: green;
+    margin: 10px;
+}
+
 #admin-body{
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;

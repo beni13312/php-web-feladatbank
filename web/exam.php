@@ -69,28 +69,46 @@ if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){ // ha 
         </div>
         <div id="exam-answers">
             <?php
-            $sql_ans = "select megoldasok.megoldas
-                        from feladat, megoldasok, feladat_megoldas
-                        where feladat.kat_id=? and
-                        feladat.id = ? and 
-                        feladat.id = feladat_megoldas.feladat_id and
+            $sql_ans = "SELECT megoldasok.id
+                        FROM feladat, megoldasok, feladat_megoldas
+                        WHERE feladat.kat_id=? AND
+                        feladat.id = ? AND 
+                        feladat.id = feladat_megoldas.feladat_id AND
                         feladat_megoldas.megoldas_id = megoldasok.id";
+
             $query = $conn->prepare($sql_ans);
             $query->bind_param("ii", $category,$_SESSION['feladat']);
             $query->execute();
             $result = $query->get_result();
             $multiple_sol = $result->num_rows > 1; // ha több mint egy megoldas van
+
+            $sql_ans2 = "SELECT valaszok.id, valaszok.valasz
+                         FROM feladat, valaszok, feladat_valasz
+                         WHERE feladat.kat_id = ? AND
+                               feladat.id = ? AND
+                               feladat_valasz.feladat_id = feladat.id AND
+                               feladat_valasz.valasz_id = valaszok.id";
+
+            $query = $conn->prepare($sql_ans2);
+            $query->bind_param("ii", $category,$_SESSION['feladat']);
+            $query->execute();
+            $result = $query->get_result();
+
             ?>
             <form id="exam-form" action="check_ans.php" method="POST">
                 <?php
                 if($multiple_sol){
                     echo '<div class="exam-ans-more">';
                         echo '<div id="exam-ans-title">Több megoldás</div>';
-                        echo '<div class="exam-ans" id="x1"><input type="checkbox" name="ans">x</div>';
+                        while($row = $result->fetch_assoc()){
+                            echo '<div class="exam-ans"><input type="checkbox" name="ans" value="'.$row['id'].'">'.$row['valasz'].'</div>';
+                        }
                     echo '</div>';
                 }else{
                     echo '<div class="exam-ans-one">';
-                        echo '<div class="exam-ans" id="x1"><input type="radio" name="ans">x</div>';
+                        while($row = $result->fetch_assoc()){
+                            echo '<div class="exam-ans"><input type="radio" name="ans" value="'.$row['id'].'">'.$row['valasz'].'</div>';
+                        }
                     echo '</div>';
                 }
                 ?>
