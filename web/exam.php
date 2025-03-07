@@ -87,7 +87,7 @@ if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){ // ha 
                          WHERE feladat.kat_id = ? AND
                                feladat.id = ? AND
                                feladat_valasz.feladat_id = feladat.id AND
-                               feladat_valasz.valasz_id = valaszok.id";
+                               feladat_valasz.valasz_id = valaszok.id"; // válaszok
 
             $query = $conn->prepare($sql_ans2);
             $query->bind_param("ii", $category,$_SESSION['feladat']);
@@ -101,13 +101,13 @@ if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){ // ha 
                     echo '<div class="exam-ans-more">';
                         echo '<div id="exam-ans-title">Több megoldás</div>';
                         while($row = $result->fetch_assoc()){
-                            echo '<div class="exam-ans"><input type="checkbox" name="ans" value="'.$row['id'].'">'.$row['valasz'].'</div>';
+                            echo '<div class="exam-ans"><input type="checkbox" name="ans" value="'.$row['id'].'">'.htmlspecialchars($row['valasz'], ENT_QUOTES,'UTF-8').'</div>';
                         }
                     echo '</div>';
                 }else{
                     echo '<div class="exam-ans-one">';
                         while($row = $result->fetch_assoc()){
-                            echo '<div class="exam-ans"><input type="radio" name="ans" value="'.$row['id'].'">'.$row['valasz'].'</div>';
+                            echo '<div class="exam-ans"><input type="radio" name="ans" value="'.$row['id'].'">'.htmlspecialchars($row['valasz'], ENT_QUOTES,'UTF-8').'</div>';
                         }
                     echo '</div>';
                 }
