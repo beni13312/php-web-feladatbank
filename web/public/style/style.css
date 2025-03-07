@@ -7,6 +7,16 @@
 
 }
 
+.error-message{
+    color: red;
+    margin: 10px;
+}
+.success-message{
+    color: green;
+    margin: 10px;
+}
+
+
 /* scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
@@ -188,16 +198,18 @@ body{
     font-size: 20px;
 }
 
-/* admin_login.php */
 
-.error-message{
-    color: red;
-    margin: 10px;
+/* exam.php */
+
+.exam-ans{
+    cursor: pointer;
+    margin-top: 10px;
 }
-.success-message{
-    color: green;
-    margin: 10px;
-}
+
+
+
+
+/* admin_login.php */
 
 #admin-body{
     font-family: 'Arial', sans-serif;
