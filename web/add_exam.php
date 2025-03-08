@@ -1,29 +1,29 @@
 <?php
 session_start();
 
-if($_SERVER['REQUEST_METHOD'] !== 'POST'){
+if($_SERVER['REQUEST_METHOD'] !== 'POST'){ // csak POST kérés
     die("Hiba: rossz kérési protokol!");
 }
 
-$cat = $_POST['category'];
-$question = $_POST['exam-question'];
+$cat = $_POST['category']; // kategória admin_dash.php oldalról
+$question = $_POST['exam-question']; // kérdés admin_dash.php oldalról
 $answers = array(); // válaszok
 $solutions = array(); // megoldások
 
 // válaszok hozzáadása tömbhöz
-for($ans = 1; $ans<=10; $ans++){
+for($ans = 1; $ans<=10; $ans++){ // max 10
     if(isset($_POST['ans-'.$ans])){
         $answers[] = $_POST['ans-' . $ans];
     }
 }
 
 // megoldások hozzáadása tömbhöz
-for($sol = 1; $sol<=10; $sol++){
+for($sol = 1; $sol<=10; $sol++){ // max 10
     if(isset($_POST['isSol-'.$sol])){
         $solutions[] = $_POST['isSol-'.$sol];
     }
 }
-if(!isset($cat) || !isset($question) || sizeof($answers) < 2 || sizeof($solutions) < 1){ // ellenörzés
+if(!isset($cat) || !isset($question) || sizeof($answers) < 2 || sizeof($solutions) < 1){ // ellenörzés, megvan-e minden adat
     $_SESSION['error'] = "Nem lehet egy mező sem üres!!: "."cat:".$cat."question: ".$question."arrays: ".sizeof($answers).":".sizeof($solutions);
     header("Location: admin.php?dashboard");
     exit;
@@ -31,7 +31,8 @@ if(!isset($cat) || !isset($question) || sizeof($answers) < 2 || sizeof($solution
 
 }else{
     try{
-        // adatok beírása
+        /* ADATOK BEÍRÁSA */
+
         include 'conn.php';
         global $conn;
 
@@ -43,12 +44,12 @@ if(!isset($cat) || !isset($question) || sizeof($answers) < 2 || sizeof($solution
 
         $query = $conn->prepare($sql_ans);
 
-        $valaszok_ids = [];
+        $valaszok_ids = []; // valaszok_id
 
         foreach ($answers as $ans){
             $query->bind_param("s",$ans);
             $query->execute();
-            $valaszok_ids[] = $query->insert_id; // valaszok_id
+            $valaszok_ids[] = $query->insert_id;
         }
 
         /* megoldások */
@@ -59,12 +60,12 @@ if(!isset($cat) || !isset($question) || sizeof($answers) < 2 || sizeof($solution
 
         $query = $conn->prepare($sql_sol);
 
-        $megoldasok_ids = [];
+        $megoldasok_ids = []; // megoldasok_id
 
         foreach ($solutions as $sol){
             $query->bind_param("s",$sol);
             $query->execute();
-            $megoldasok_ids[] = $query->insert_id; // megoldasok_id
+            $megoldasok_ids[] = $query->insert_id;
         }
 
         /* feladat */
