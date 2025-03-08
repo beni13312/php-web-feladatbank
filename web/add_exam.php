@@ -43,9 +43,12 @@ if(!isset($cat) || !isset($question) || sizeof($answers) < 2 || sizeof($solution
 
         $query = $conn->prepare($sql_ans);
 
+        $valaszok_ids = [];
+
         foreach ($answers as $ans){
-            $query->bind_param("s",$ans); // válaszok elhelyezése
+            $query->bind_param("s",$ans);
             $query->execute();
+            $valaszok_ids[] = $query->insert_id; // valaszok_id
         }
 
         /* megoldások */
@@ -56,33 +59,34 @@ if(!isset($cat) || !isset($question) || sizeof($answers) < 2 || sizeof($solution
 
         $query = $conn->prepare($sql_sol);
 
+        $megoldasok_ids = [];
+
         foreach ($solutions as $sol){
-            $query->bind_param("s",$sol); // válaszok elhelyezése
+            $query->bind_param("s",$sol);
             $query->execute();
+            $megoldasok_ids[] = $query->insert_id; // megoldasok_id
         }
 
         /* feladat */
 
 
-        $sql_feladat = "INSERT INTO feladat (kat_id, kerdes) VALUES ((?),(?))";
+        $sql_feladat = "INSERT INTO feladat (kat_id, kerdes) VALUES (?,?)";
 
         $query = $conn->prepare($sql_feladat);
-        $query->bind_param("is",$cat, $question); // válaszok elhelyezése
+        $query->bind_param("is",$cat, $question);
         $query->execute();
+        $feladat_id = $query->insert_id; // feladat_id
 
 
         /* feladat_valasz */
 
 
-        $sql_feladat_valasz = "INSERT INTO feladat_valasz (feladat_id, valasz_id) VALUES (
-            (SELECT feladat.id FROM feladat WHERE kerdes = ?),
-            (SELECT valaszok.id FROM valaszok WHERE valasz = ?)
-                                    )";
+        $sql_feladat_valasz = "INSERT INTO feladat_valasz (feladat_id, valasz_id) VALUES (?,?)";
 
         $query = $conn->prepare($sql_feladat_valasz);
 
-        foreach($answers as $ans){
-            $query->bind_param("ss",$question,$ans);
+        foreach($valaszok_ids as $valasz_id){
+            $query->bind_param("ss",$feladat_id,$valasz_id);
             $query->execute();
         }
 
@@ -90,14 +94,12 @@ if(!isset($cat) || !isset($question) || sizeof($answers) < 2 || sizeof($solution
         /* feladat_megoldas */
 
 
-        $sql_feladat_megoldas = "INSERT INTO feladat_megoldas (feladat_id, megoldas_id) VALUES (
-                        (SELECT feladat.id FROM feladat WHERE kerdes = ?),
-                        (SELECT megoldasok.id FROM megoldasok WHERE megoldas = ?)
-                        )";
+        $sql_feladat_megoldas = "INSERT INTO feladat_megoldas (feladat_id, megoldas_id) VALUES (?,?)";
 
         $query = $conn->prepare($sql_feladat_megoldas);
-        foreach($solutions as $sol){
-            $query->bind_param("ss",$question,$sol);
+
+        foreach($megoldasok_ids as $megoldas_id){
+            $query->bind_param("ss",$feladat_id,$megoldas_id);
             $query->execute();
 
         }
