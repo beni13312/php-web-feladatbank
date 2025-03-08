@@ -16,6 +16,7 @@ class manage_ans {
 
         const element_div = document.getElementById(this.div_id);
         if (element_div) {
+
             // div
             let ans_div = document.createElement("div");
             ans_div.classList.add("admindash-ans");
@@ -32,13 +33,21 @@ class manage_ans {
             ans_checkbox.type = "checkbox";
             ans_checkbox.classList.add("admindash-ans-sol");
             ans_checkbox.name = `isSol-${this.ansid_num}`;
+            ans_checkbox.id = `isSol-${this.ansid_num}`;
 
+            // checkbox-label
+            let checkbox_label = document.createElement("label");
+            checkbox_label.setAttribute("for",`isSol-${this.ansid_num}`);
+            checkbox_label.textContent = "Megoldás";
+
+            // append to div
             ans_div.appendChild(ans_input);
             ans_div.appendChild(ans_checkbox);
+            ans_div.appendChild(checkbox_label);
 
             this.answers.push(ans_div);
 
-
+            // append to div container
             element_div.appendChild(ans_div);
 
             this.ansid_num++;
