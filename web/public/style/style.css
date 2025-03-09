@@ -202,9 +202,21 @@ body{
 
 /* exam.php */
 
+#exam-feladat{
+    font-size: 20px;
+}
 .exam-ans{
+    align-content: center;
     cursor: pointer;
     margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    max-width: 500px;
+    background-color: #e5e3e3;
+    border-radius: 10px;
+}
+.exam-ans:hover{
+    background-color: #d3d1d1;
 }
 
 
