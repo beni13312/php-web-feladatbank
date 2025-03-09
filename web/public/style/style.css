@@ -43,6 +43,7 @@
     background: linear-gradient(135deg, #6a11cb, #2575fc);
     color: white;
     padding: 0 20px;
+    height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
