@@ -8,8 +8,8 @@ if(isset($_GET["cat"])){
     exit;
 }
 if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){ // ha más kat_id akkor töröljük a session-t, mivel a feladat.id külömböző
-    unset($_SESSION['feladat']);
-    unset($_SESSION['feladat_index']);
+    unset($_SESSION['feladat']); // feladat_id nem mindig 1-től
+    unset($_SESSION['feladat_index']); // feladat számláló 1-től kezdve
 
     $_SESSION['category'] = $category;
 

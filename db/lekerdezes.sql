@@ -49,4 +49,12 @@ FROM feladat, valaszok, feladat_valasz
 WHERE feladat.kat_id = ? AND
     feladat.id = ? AND
     feladat_valasz.feladat_id = feladat.id AND
-    feladat_valasz.valasz_id = valaszok.id
+    feladat_valasz.valasz_id = valaszok.id;
+
+
+SELECT feladat.id, valaszok.valasz
+FROM feladatbank.feladat
+JOIN feladatbank.feladat_valasz ON feladat.id = feladat_valasz.feladat_id
+JOIN feladatbank.valaszok ON feladat_valasz.valasz_id = valaszok.id
+WHERE feladat.kat_id = 6
+ORDER BY feladat.id ASC;
