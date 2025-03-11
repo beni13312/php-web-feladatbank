@@ -2,7 +2,7 @@
     <script src="public/script/nav.js"></script>
     <nav id="navbar">
         <div id="nav-left">
-            <h2 id="nav-title">Informatikai Feladat gyűjtemény</h2>
+            <h2 id="nav-title">Informatikai Feladatgyűjtemény</h2>
         </div>
         <div id="nav-right">
             <div class="nav-d" id="nav-info">Információ</div>
@@ -16,7 +16,7 @@
         if (window.innerWidth < 594) {
             titleElement.textContent = "INFOGY";
         } else {
-            titleElement.textContent = "Informatikai Feladat gyűjtemény";
+            titleElement.textContent = "Informatikai Feladatgyűjtemény";
         }
     }
 

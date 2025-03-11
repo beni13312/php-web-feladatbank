@@ -24,7 +24,7 @@ for($sol = 1; $sol<=10; $sol++){ // max 10
     }
 }
 if(!isset($cat) || !isset($question) || sizeof($answers) < 2 || sizeof($solutions) < 1){ // ellenörzés, megvan-e minden adat
-    $_SESSION['error'] = "Nem lehet egy mező sem üres!!: "."cat:".$cat."question: ".$question."arrays: ".sizeof($answers).":".sizeof($solutions);
+    $_SESSION['error'] = "Nem lehet egy mező sem üres!!";
     header("Location: admin.php?dashboard");
     exit;
 
