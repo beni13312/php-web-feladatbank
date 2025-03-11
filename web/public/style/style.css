@@ -314,18 +314,36 @@ body{
     }
 }
 
-#admindash-add{
+#admindash-add {
     margin-top: 20px;
-    border: transparent solid 4px;
-    border-image: linear-gradient(135deg, #6a11cb, #2575fc) 1;
     width: 400px;
-    border-radius: 20px;
     padding: 30px 10px 10px 10px;
+    background-color: #ffffff; /* Ensure content is visible */
+    border-radius: 20px;
+    border: solid transparent; /* Transparent border for space */
+    position: relative;
+    margin-bottom: 200px;
+}
+
+#admindash-add::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient border */
+    filter: blur(10px);
+    border-radius: 22px; /* Rounded corners for the gradient border */
+    z-index: -1; /* Place behind the form content */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 #admindash-form input, select{
     padding: 10px;
     font-size: 1rem;
-    border-radius: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: rgba(175, 175, 175, 0.37);
     cursor: pointer;
 }
 #admindash-form input[type=checkbox]{
@@ -346,6 +364,9 @@ body{
 .admindash-ans{
     margin:10px;
 }
+.admindash-ans input[type=text]{
+    width: 200px;
+}
 .admindash-ans input[type=text]:hover{
     width: 210px;
     transition: max-width 0.9s ease;
@@ -358,12 +379,12 @@ body{
 #admindash-ans-add:hover{
     background-color: rgb(153, 231, 134);
     transform: scale(1.05);
-    transition: all 1s ease
+    transition: all 1s ease;
 }
 #admindash-ans-rm:hover{
     background-color: rgb(231, 134, 134);
     transform: scale(1.05);
-    transition: all 1s ease
+    transition: all 1s ease;
 }
 
 #admindash-submit{

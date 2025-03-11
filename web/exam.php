@@ -112,9 +112,9 @@ if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){ // ha 
                     echo '</div>';
                 }
                 ?>
-                <input id="exam-check" type="submit" name="exam-submit" value="Ellenörzés">
+                <input id="exam-check" type="submit" name="exam-submit" value="Ellenőrzés">
                 <?php
-                    if($_SESSION['feladat_index'] > 1){
+                    if($_SESSION['feladat_index'] > 1){ // ha nagyobb a feladat index 1-nél vagyis nem az első feladat
                         echo '<input id="exam-before" type="submit" name="exam-before" value="Elöző">';
                     }
                 ?>
