@@ -19,7 +19,6 @@ if(isset($category) && isset($advance)){
 /* elöző kérdés */
 
 $advance = $_POST['exam-before'];
-$category = $_SESSION['category'];
 
 if(isset($category) && isset($advance)){
     $_SESSION['feladat'] -=1; // csökkentjük a sessionben a feladat id-t, az elöző feladat érdekében
@@ -28,5 +27,19 @@ if(isset($category) && isset($advance)){
 }
 
 /* válasz ellenörzése */
+
+include('conn.php');
+global $conn;
+
+$feladat_id = $_SESSION['feladat'];
+$answers = array(); // válaszok
+
+$i = 1;
+$sql = "SELECT valaszok.id 
+FROM valaszok, megoldasok WHERE id = '$feladat_id'";
+while(isset($_POST['answer-'.$i])){
+    $i++;
+}
+
 
 

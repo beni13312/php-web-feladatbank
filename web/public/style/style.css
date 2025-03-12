@@ -300,7 +300,7 @@ body{
 #admin-submit-logout:hover{
     background: linear-gradient(135deg, #6a11cb, #2575fc);
     color: white;
-    
+
 }
 @keyframes gradientMove {
     0% {

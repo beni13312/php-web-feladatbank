@@ -97,14 +97,14 @@ if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){ // ha 
             ?>
             <form id="exam-form" action="check_ans.php" method="POST">
                 <?php
-                if($multiple_sol){
+                if($multiple_sol){ // ha több a megoldás
                     echo '<div class="exam-ans-more">';
                         echo '<div id="exam-ans-title">Több megoldás</div>';
                         while($row = $result->fetch_assoc()){
-                            echo '<div class="exam-ans"><input type="checkbox" name="ans" value="'.$row['id'].'">'.htmlspecialchars($row['valasz'], ENT_QUOTES,'UTF-8').'</div>';
+                            echo '<div class="exam-ans"><input type="checkbox" name="ans-'.$row['id'].'" value="'.$row['id'].'">'.htmlspecialchars($row['valasz'], ENT_QUOTES,'UTF-8').'</div>';
                         }
                     echo '</div>';
-                }else{
+                }else{ // ha egy megoldás van
                     echo '<div class="exam-ans-one">';
                         while($row = $result->fetch_assoc()){
                             echo '<div class="exam-ans"><input type="radio" name="ans" value="'.$row['id'].'">'.htmlspecialchars($row['valasz'], ENT_QUOTES,'UTF-8').'</div>';
