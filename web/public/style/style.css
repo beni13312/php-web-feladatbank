@@ -207,6 +207,10 @@ body{
 }
 .quiz-ans{
     align-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
     cursor: pointer;
     margin-top: 10px;
     padding: 10px;
@@ -216,6 +220,12 @@ body{
     background-color: #e5e3e3;
     border-radius: 10px;
 }
+.quiz-ans-ch input{
+    width: 20px;
+    height: 20px;
+
+}
+
 .quiz-ans:hover{
     background-color: #d3d1d1;
 }

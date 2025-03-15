@@ -95,19 +95,19 @@ if(!isset($_SESSION['category']) || $_SESSION['category'] !== $category){ // ha 
             $result = $query->get_result();
 
             ?>
-            <form id="exam-form" action="check_ans.php" method="POST">
+            <form id="quiz-form" action="check_ans.php" method="POST">
                 <?php
                 if($multiple_sol){ // ha több a megoldás
                     echo '<div class="quiz-ans-more">';
                         echo '<div id="quiz-ans-title">Több megoldás</div>';
                         while($row = $result->fetch_assoc()){
-                            echo '<div class="quiz-ans"><input type="checkbox" name="ans-' .$row['id'].'" value="'.$row['id'].'">'.htmlspecialchars($row['valasz'], ENT_QUOTES,'UTF-8').'</div>';
+                            echo '<div class="quiz-ans"><div class="quiz-ans-ch"><input type="checkbox" name="ans-' .$row['id'].'" value="'.$row['id'].'"></div><div class="quiz-ans-text">'.htmlspecialchars($row['valasz'], ENT_QUOTES,'UTF-8').'</div></div>';
                         }
                     echo '</div>';
                 }else{ // ha egy megoldás van
                     echo '<div class="quiz-ans-one">';
                         while($row = $result->fetch_assoc()){
-                            echo '<div class="quiz-ans"><input type="radio" name="ans" value="' .$row['id'].'">'.htmlspecialchars($row['valasz'], ENT_QUOTES,'UTF-8').'</div>';
+                            echo '<div class="quiz-ans"><div class="quiz-ans-ch"><input type="radio" name="ans" value="'.$row['id'].'"></div><div class="quiz-ans-text">'.htmlspecialchars($row['valasz'], ENT_QUOTES,'UTF-8').'</div></div>';
                         }
                     echo '</div>';
                 }

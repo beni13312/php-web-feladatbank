@@ -1,4 +1,27 @@
-// exam
+// quiz
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Select all elements with the class 'quiz-ans'
+    document.querySelectorAll('.quiz-ans').forEach(element => {
+        element.addEventListener('click', function() {
+            // Use `this` inside a normal function to refer to the clicked element
+            this.querySelector('.quiz-ans-ch input[type="radio"]').checked = true;
+        });
+    });
+    document.querySelectorAll('.quiz-ans').forEach(element => {
+        element.addEventListener('click', function() {
+            // Use `this` inside a normal function to refer to the clicked element
+            if(this.querySelector('.quiz-ans-ch input[type="checkbox"]').checked){
+                this.querySelector('.quiz-ans-ch input[type="checkbox"]').checked=false;
+            }
+            else {
+                this.querySelector('.quiz-ans-ch input[type="checkbox"]').checked = true;
+            }
+
+        });
+    });
+});
+
 
 
 // admin_dash

@@ -42,7 +42,7 @@ if(!isset($_SESSION['authorized'])){
             </div>
         </div>
         <div id="admindash-add">
-            <form action="add_exam.php" method="post" id="admindash-form">
+            <form action="add_quiz.php" method="post" id="admindash-form">
                 <div class="admindash-cat-container">
                     <?php $sql_cat= "SELECT kategoria.id, kategoria.kategoria FROM kategoria order by kategoria.id ASC";
                     $query = mysqli_query($conn,$sql_cat);
