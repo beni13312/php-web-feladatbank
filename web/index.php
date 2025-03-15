@@ -23,7 +23,7 @@
 
         if (mysqli_num_rows($query) > 0) {
             while ($row = mysqli_fetch_assoc($query)) {
-                echo '<a class="category-element-a" href="exam.php?cat='.$row['id'].'">
+                echo '<a class="category-element-a" href="quiz.php?cat='.$row['id'].'">
                 <div class="category-element" id="cat-'.$row['id'].'">'.$row['kategoria'].'</div>
                 </a>';
             }

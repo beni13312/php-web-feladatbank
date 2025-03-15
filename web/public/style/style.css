@@ -200,22 +200,23 @@ body{
 }
 
 
-/* exam.php */
+/* quiz.php */
 
-#exam-feladat{
+#quiz-feladat{
     font-size: 20px;
 }
-.exam-ans{
+.quiz-ans{
     align-content: center;
     cursor: pointer;
     margin-top: 10px;
     padding: 10px;
     width: 100%;
     max-width: 500px;
+    height: 40px;
     background-color: #e5e3e3;
     border-radius: 10px;
 }
-.exam-ans:hover{
+.quiz-ans:hover{
     background-color: #d3d1d1;
 }
 
