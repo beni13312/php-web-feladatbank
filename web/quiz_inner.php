@@ -40,8 +40,12 @@ $category = $_SESSION['category'];
         $query = $conn->prepare($sql_id);
         $query->bind_param("i", $category);
         $query->execute();
-        $row = $query->get_result()->fetch_assoc();
+        $result = $query->get_result();
 
+        if(mysqli_num_rows($result) === 0){
+            echo 'x';
+        }
+        $row = $result->fetch_assoc();
         $_SESSION['feladat'] = $row['id']; // feladat id
         $_SESSION['feladat_index'] = 1; // feladat száma
 
