@@ -200,10 +200,11 @@ body{
 }
 
 
-/* quiz.php */
+/* quiz.php, quiz_inner.php */
 
 #quiz-feladat{
     font-size: 20px;
+    height: 80vh;
 }
 .quiz-ans{
     align-content: center;
