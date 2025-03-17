@@ -22,6 +22,7 @@ global $conn;
 $category = $_SESSION['category'];
 
 ?>
+<div id="quiz-feladat">
 <div id="quiz-kerdes">
     <?php
     if(!isset($_SESSION['feladat'])) {$_SESSION['feladat'] = null;} // ha nincsen feladat session akkor létrehozunk
@@ -43,12 +44,13 @@ $category = $_SESSION['category'];
         $result = $query->get_result();
 
         if(mysqli_num_rows($result) === 0){
-            echo 'x';
+            echo 'Nem található feladat ebben a kategóriában :('; // ha nincsen egyáltalán a feladat az adott kategóriában
         }
         $row = $result->fetch_assoc();
         $_SESSION['feladat'] = $row['id']; // feladat id
         $_SESSION['feladat_index'] = 1; // feladat száma
 
+        // ujra lefutatjuk az SQL parancsot
         $query = $conn->prepare($sql_kerdes);
         $query->bind_param("ii", $_SESSION['feladat'],$category);
         $query->execute();
@@ -135,6 +137,7 @@ $category = $_SESSION['category'];
         ?>
         <input id="quiz-check" type="submit" name="quiz-advance" value="Tovább">
     </form>
+</div>
 </div>
 </body>
 </html>
