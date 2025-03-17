@@ -15,7 +15,7 @@
     <h1 id="cat-title">Kategóriák</h1>
     <div id="category">
         <?php
-        include("conn.php");
+        include("conn/conn.php");
         global $conn;
 
         $sql = "SELECT id, kategoria FROM kategoria ORDER BY id";

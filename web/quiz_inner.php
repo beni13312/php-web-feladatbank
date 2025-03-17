@@ -16,7 +16,7 @@ session_start();
 </head>
 <body>
 <?php
-include "conn.php";
+include "conn/conn.php";
 global $conn;
 
 $category = $_SESSION['category'];

@@ -7,7 +7,7 @@ if($_SERVER['REQUEST_METHOD'] !== 'POST'){
 
 /* válasz ellenörzése */
 
-include('conn.php');
+include('../conn/conn.php');
 global $conn;
 
 $feladat_id = $_SESSION['feladat'];

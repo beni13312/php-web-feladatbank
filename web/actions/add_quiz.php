@@ -25,7 +25,7 @@ for($sol = 1; $sol<=10; $sol++){ // max 10
 }
 if(!isset($cat) || !isset($question) || sizeof($answers) < 2 || sizeof($solutions) < 1){ // ellenörzés, megvan-e minden adat
     $_SESSION['error'] = "Nem lehet egy mező sem üres!!";
-    header("Location: admin.php?dashboard");
+    header("Location: ../admin.php?dashboard");
     exit;
 
 
@@ -33,7 +33,7 @@ if(!isset($cat) || !isset($question) || sizeof($answers) < 2 || sizeof($solution
     try{
         /* ADATOK BEÍRÁSA */
 
-        include 'conn.php';
+        include '../conn/conn.php';
         global $conn;
 
 
@@ -106,7 +106,7 @@ if(!isset($cat) || !isset($question) || sizeof($answers) < 2 || sizeof($solution
         }
 
         $_SESSION['success'] = "Az adatok bekerültek az adatbázisba!";
-        header("Location: admin.php?dashboard");
+        header("Location: ../admin.php?dashboard");
         exit;
     }catch (Exception $e){
         $_SESSION['error'] = $e->getMessage();

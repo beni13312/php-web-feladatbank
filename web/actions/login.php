@@ -12,12 +12,12 @@ $password = $_POST['password'];
 
 if(empty($username) || empty($password)){
     $_SESSION['error'] = "Felhasználó név és a jelszó nem lehet üres!";
-    header('Location: admin.php');
+    header('Location: ../admin.php');
     exit;
 }
 
 
-include("conn.php");
+include("../conn/conn.php");
 global $conn;
 // lekérdezés, prepare() - sql parancsok kiszűrése
 
@@ -34,17 +34,16 @@ if(mysqli_num_rows($result) == 1){
         session_regenerate_id(true);
         $_SESSION['authorized'] = $username;
         $_SESSION['session_id'] = hash('sha256', uniqid(mt_rand(), true));
-        header('Location: admin.php?dashboard');
+        header('Location: ../admin.php?dashboard');
         exit;
     }else{
         $_SESSION['error'] = "Felhasználó név vagy a jelszó helytelen!";
-        header('Location: admin.php');
+        header('Location: ../admin.php');
         exit;
     }
 }else{
     $_SESSION['error'] = "Felhasználó név vagy a jelszó helytelen!";
-    header('Location: admin.php');
+    header('Location: ../admin.php');
     exit;
 }
 
-$query->close();

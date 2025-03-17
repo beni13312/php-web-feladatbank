@@ -23,7 +23,7 @@ if(!isset($_SESSION['authorized'])){
 </head>
 <body>
 <?php require "header/header.php"?>
-<?php include "conn.php"; global $conn; ?>
+<?php include "conn/conn.php"; global $conn; ?>
 <div class="body">
     <div id="admin-flexbox">
         <h1>Admin felület</h1>
@@ -96,8 +96,6 @@ if(!isset($_SESSION['authorized'])){
 
         </div>
     </div>
-
-</div>
 <?php require "footer/footer.php"?>
 </body>
 </html>
