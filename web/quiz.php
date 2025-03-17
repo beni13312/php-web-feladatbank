@@ -22,8 +22,8 @@ if(isset($_GET["cat"]) && ctype_digit($_GET["cat"])){ // ha integer, egész szá
 <body>
 <?php require "header/header.php"?>
 <div class="body">
-    <iframe src="quiz_inner.php" width="100%" height="500px" style="border: none" id="quiz-feladat-frame"></iframe> <!-- külön HTML betöltése,
-                                                                                                             hogy ne az egész weboldal frissűljön újra -->
+    <iframe src="quiz_inner.php" width="100%" height="500px" style="border: none" id="quiz-feladat-frame"></iframe><?php /* külön HTML betöltése,
+                                                                                                                   hogy ne az egész weboldal frissűljön újra */ ?>
 </div>
 
 <?php require "footer/footer.php"?>

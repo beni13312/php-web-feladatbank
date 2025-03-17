@@ -45,6 +45,7 @@ $category = $_SESSION['category'];
 
         if(mysqli_num_rows($result) === 0){
             echo 'Nem található feladat ebben a kategóriában :('; // ha nincsen egyáltalán a feladat az adott kategóriában
+            exit;
         }
         $row = $result->fetch_assoc();
         $_SESSION['feladat'] = $row['id']; // feladat id
@@ -112,7 +113,7 @@ $category = $_SESSION['category'];
     ?>
 
 
-    <form id="quiz-form" action="check_ans.php" method="POST">
+    <form class="quiz-form" action="check_ans.php" method="POST">
         <?php
         if($multiple_sol){ // ha több a megoldás
             echo '<div class="quiz-ans-more">';
@@ -130,6 +131,8 @@ $category = $_SESSION['category'];
         }
         ?>
         <input id="quiz-check" type="submit" name="quiz-submit" value="Ellenőrzés">
+    </form>
+    <form class="quiz-form" action="next_previous.php" method="POST">
         <?php
         if($_SESSION['feladat_index'] > 1){ // ha nagyobb a feladat index 1-nél vagyis nem az első feladat
             echo '<input id="quiz-before" type="submit" name="quiz-before" value="Elöző">';
