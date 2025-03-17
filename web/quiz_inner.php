@@ -11,7 +11,7 @@ session_start();
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="public/style/style.css">
-    <script src="public/script/script.js"></script>
+    <script src="public/script/quiz.js"></script>
     <title>Feladatbank</title>
 </head>
 <body>
@@ -113,7 +113,7 @@ $category = $_SESSION['category'];
     ?>
 
 
-    <form class="quiz-form" action="check_ans.php" method="POST">
+    <form class="quiz-form" action="actions/check_ans.php" method="POST">
         <?php
         if($multiple_sol){ // ha több a megoldás
             echo '<div class="quiz-ans-more">';
@@ -132,7 +132,7 @@ $category = $_SESSION['category'];
         ?>
         <input id="quiz-check" type="submit" name="quiz-submit" value="Ellenőrzés">
     </form>
-    <form class="quiz-form" action="next_previous.php" method="POST">
+    <form class="quiz-form" action="actions/next_previous.php" method="POST">
         <?php
         if($_SESSION['feladat_index'] > 1){ // ha nagyobb a feladat index 1-nél vagyis nem az első feladat
             echo '<input id="quiz-before" type="submit" name="quiz-before" value="Elöző">';

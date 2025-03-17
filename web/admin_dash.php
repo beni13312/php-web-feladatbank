@@ -18,7 +18,7 @@ if(!isset($_SESSION['authorized'])){
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="public/style/style.css">
-    <script src="public/script/script.js"></script>
+    <script src="public/script/admin_dash.js"></script>
     <title>Admin felület</title>
 </head>
 <body>
@@ -28,7 +28,7 @@ if(!isset($_SESSION['authorized'])){
     <div id="admin-flexbox">
         <h1>Admin felület</h1>
         <div id="admin-logout">
-            <form method="POST" action="logout.php">
+            <form method="POST" action="actions/logout.php">
                 <input type="submit" name="submit" value="Kijelentkezés" id="admin-submit-logout">
             </form>
         </div>
@@ -42,7 +42,7 @@ if(!isset($_SESSION['authorized'])){
             </div>
         </div>
         <div id="admindash-add">
-            <form action="add_quiz.php" method="post" id="admindash-form">
+            <form action="actions/add_quiz.php" method="post" id="admindash-form">
                 <div class="admindash-cat-container">
                     <?php $sql_cat= "SELECT kategoria.id, kategoria.kategoria FROM kategoria order by kategoria.id ASC";
                     $query = mysqli_query($conn,$sql_cat);
