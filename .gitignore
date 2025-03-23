@@ -1,3 +1,4 @@
-*.idea
-*.DAV
+.idea
+.DAV
 /web/conn/
+/web/.idea/
