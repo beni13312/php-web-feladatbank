@@ -1,0 +1,45 @@
+@import "style.css";
+
+/* quiz.php, quiz_inner.php */
+
+#quiz-feladat-frame{
+    height: 80vh;
+}
+#quiz-feladat{
+    font-size: 20px;
+}
+.quiz-ans{
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 10px;
+    width: 90%;
+    max-width: 500px;
+    height: 40px;
+    background-color: #e5e3e3;
+    border-radius: 10px;
+}
+.quiz-ans-ch input{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+}
+
+.quiz-ans:hover{
+    background-color: #d3d1d1;
+}
+
+.quiz-wrong{
+    border: 1px solid red;
+    box-shadow: 2px 2px 8px red;
+}
+
+.quiz-good{
+    border: 1px solid green;
+    box-shadow: 2px 2px 5px green;
+}
