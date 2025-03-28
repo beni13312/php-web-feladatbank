@@ -2,3 +2,4 @@
 .DAV
 /web/conn/
 /web/.idea/
+/web/actions/session_db.php
