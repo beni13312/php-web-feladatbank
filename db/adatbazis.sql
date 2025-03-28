@@ -16,10 +16,14 @@ create table if not exists admin_felhasznalok( -- admin felhasználók
     ido timestamp default current_timestamp
 );
 
+
 create table session_db( -- session tábla létrehozása, recordok eltárolása memoriában a gyorsabb lekérdezésért
-    session_id varchar(256) primary key not null,
-    session_data varchar(1024)
-) engine = memory;
+    session_id varchar(256) primary key not null unique,
+    session_data varchar(1024),
+    ip_address varchar(40),
+    created_at timestamp default current_timestamp,
+    expires_at timestamp not null
+) engine = memory; -- recordok tárolása memóriában a gyorsabb lekérdezésért
 
 
 create table if not exists kategoria( -- kategória pl.: Python, feladatok csoportja
